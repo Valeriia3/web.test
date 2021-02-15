@@ -3,3 +3,7 @@
 Callculator/obj/*
 Callculator/bin/*
 packages/*
+
+Web.Test.Tests/.vs
+Web.Test.Tests/bin
+Web.Test.Tests/obj
