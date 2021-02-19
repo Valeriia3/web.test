@@ -163,20 +163,7 @@ namespace Web.Test.Tests
             Assert.AreEqual("'TEST' user doesn't exist!", actualError);
         }
 
-        //[Test]
-        //public void Settings()
-        //{
-        //    IWebDriver webDriver = new ChromeDriver();
-
-        //    webDriver.Url = "http://localhost:64177/Deposit";
-
-        //    webDriver.FindElements(By.LinkText("Settings"))[1].Click();
-
-        //    string url = webDriver.Url;
-        //    Assert.AreEqual("http://localhost:64177/Settings", url);
-
-        //    webDriver.Quit();
-        //}
+       
 
 
 
