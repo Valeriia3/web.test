@@ -1,5 +1,6 @@
 
 .vs/*
+Callculator/.vs/*
 Callculator/obj/*
 Callculator/bin/*
 packages/*
