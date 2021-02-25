@@ -6,6 +6,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
+
 namespace Web.Test.Tests
 {
     class DepositPageTest
@@ -72,7 +73,7 @@ namespace Web.Test.Tests
         public void percent_check_101()
         {
             webDriver.FindElement(By.Id("percent")).SendKeys("101");
-          
+
 
             string Percent = webDriver.FindElement(By.Id("percent")).GetAttribute("value");
             Assert.AreEqual("0", Percent);
@@ -87,52 +88,51 @@ namespace Web.Test.Tests
             Assert.AreEqual("0", Percent);
         }
         [Test]
-            public void Russian_letters()
-            {
-                webDriver.FindElement(By.Id("amount")).SendKeys("лоравлыаловрла");
-                webDriver.FindElement(By.Id("percent")).SendKeys("лорол");
-                webDriver.FindElement(By.Id("term")).SendKeys("лорлрл");
-                
+        public void Russian_letters()
+        {
+            webDriver.FindElement(By.Id("amount")).SendKeys("лоравлыаловрла");
+            webDriver.FindElement(By.Id("percent")).SendKeys("лорол");
+            webDriver.FindElement(By.Id("term")).SendKeys("лорлрл");
 
-                string Amount = webDriver.FindElement(By.Id("amount")).GetAttribute("value");
+
+            string Amount = webDriver.FindElement(By.Id("amount")).GetAttribute("value");
             Assert.AreEqual("0", Amount);
 
-                string Percent = webDriver.FindElement(By.Id("percent")).GetAttribute("value");
-                Assert.AreEqual("0", Percent);
+            string Percent = webDriver.FindElement(By.Id("percent")).GetAttribute("value");
+            Assert.AreEqual("0", Percent);
 
-                string Term = webDriver.FindElement(By.Id("term")).GetAttribute("value");
-                Assert.AreEqual("0", Term);
+            string Term = webDriver.FindElement(By.Id("term")).GetAttribute("value");
+            Assert.AreEqual("0", Term);
 
-                // 
-            }
+            // 
+        }
 
-                 [Test]
-            public void Day()
+        [Test]
+        public void Day()
         {
             using (IWebDriver chrome = new ChromeDriver())
             {
+                webDriver.FindElement(By.Id("amount")).SendKeys("10");
+                webDriver.FindElement(By.Id("percent")).SendKeys("5");
+                webDriver.FindElement(By.Id("term")).SendKeys("200");
+                webDriver.FindElement(By.Id("d365")).Click();
+
+
+                string Income = webDriver.FindElement(By.Id("income")).GetAttribute("value");
+                Assert.AreEqual("10.27", Income);
+
+                string Interest = webDriver.FindElement(By.Id("interest")).GetAttribute("value");
+                Assert.AreEqual("0.27", Interest);
+
+
                 var day = chrome.FindElement(By.Id("day"));
                 SelectElement select_day = new SelectElement(day);
-                select_day.SelectByValue("2");
+                select_day.SelectByValue("21");
 
                 string Term = webDriver.FindElement(By.Id("day")).GetAttribute("value");
                 Assert.AreEqual("2", day);
             }
         }
     }
-
-    internal class SelectElement
-    {
-        private IWebElement day;
-
-        public SelectElement(IWebElement day)
-        {
-            this.day = day;
-        }
-
-        internal void SelectByValue(string v)
-        {
-            throw new NotImplementedException();
-        }
-    }
 }
+
